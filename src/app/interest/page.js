@@ -47,7 +47,8 @@ const Interest = () => {
         showToast(res.message, "error")
       }
       else {
-        setTotalPages(res?.pagination.totalPages)
+        console.log(res?.pagination.totalPages)
+        setTotalPages(res?.pagination.totalCount)
         dispatch(setAllCategories(res?.categories))
       }
 
@@ -61,6 +62,7 @@ const Interest = () => {
   const handlePageChange = (page) => {
     setCurrentPage(page);
   };
+
   return (
     <div className="flex justify-center items-center h-[70vh]">
       <Card className="w-[400px]">
@@ -95,10 +97,10 @@ const Interest = () => {
                 <RxDoubleArrowLeft disabled={currentPage === 1} onClick={() => handlePageChange(1)} />
                 <MdKeyboardArrowLeft onClick={() => handlePageChange(currentPage == 1 ? 1 : currentPage - 1)} />
               </PaginationItem>
-              {Array.from({ length: Math.ceil(totalPages / 6) }, (_, i) => i + 1)
+              {Array.from({ length: Math.ceil(totalPages / pageLimit) }, (_, i) => i + 1)
                 .slice(
-                  Math.max(0, currentPage - 3),
-                  Math.min(Math.ceil(totalPages / 6), currentPage + 4)
+                  Math.max(0, currentPage - 1),
+                  Math.min(Math.ceil(totalPages / pageLimit), currentPage + 4)
                 )
                 .map((page) => (
                   <PaginationItem key={page}>
@@ -112,8 +114,8 @@ const Interest = () => {
                   </PaginationItem>
                 ))}
               <PaginationItem className="flex justify-center items-center gap-1">
-                <MdKeyboardArrowRight disabled={currentPage === Math.ceil(totalPages / 6)} onClick={() => handlePageChange(currentPage == Math.ceil(totalPages / 6) ? currentPage : currentPage + 1)} />
-                <RxDoubleArrowRight disabled={currentPage === Math.ceil(totalPages / 6)} onClick={() => handlePageChange(Math.ceil(totalPages / 6))} />
+                <MdKeyboardArrowRight disabled={currentPage === Math.ceil(totalPages / pageLimit)} onClick={() => handlePageChange(currentPage == Math.ceil(totalPages / pageLimit) ? currentPage : currentPage + 1)} />
+                <RxDoubleArrowRight disabled={currentPage === Math.ceil(totalPages / pageLimit)} onClick={() => handlePageChange(Math.ceil(totalPages / pageLimit))} />
               </PaginationItem>
             </PaginationContent>
           </Pagination>
