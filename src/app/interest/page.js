@@ -36,7 +36,6 @@ import isAuth from "../isAuth"
 
 const Interest = () => {
   const interests = useAppSelector((state) => state.app.categories)
-  console.log(interests)
   const dispatch = useDispatch()
   const [pageLimit, setPageLimit] = useState(6);
   const [totalPages, setTotalPages] = useState(0)
