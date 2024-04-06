@@ -1,5 +1,6 @@
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import Link from 'next/link'
 
 const page = () => {
     return (
@@ -20,7 +21,7 @@ const page = () => {
                 <Input className="w-10" />
                 <Input className="w-10" />
             </div>
-            <Button className="w-full">Verify</Button>
+            <Link href={"/interest"}><Button className="w-full">Verify</Button></Link>
         </div>
     )
 }

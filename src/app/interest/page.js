@@ -19,7 +19,7 @@ import {
 } from "@/components/ui/pagination"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
-import Link from 'next/link'
+
 import { Checkbox } from "@/components/ui/checkbox"
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 
